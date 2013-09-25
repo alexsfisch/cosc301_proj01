@@ -10,6 +10,7 @@
 #include <string.h>
 #include <errno.h>
 #include "list.h"
+#include <sys/resource.h>
 
 
 void usage(char *program) {
@@ -19,6 +20,15 @@ void usage(char *program) {
 
 
 int main(int argc, char **argv) {
+	//system and user time variables
+	/*int ret;
+	char *buffer;
+	int i = 0;
+	int who = RUSAGE_SELF;
+	struct rusage usage;
+	struct rusage *p=&usage;
+	ret = getrusage(who,p);
+	process(p,"---------before");*/
 	//if use getline, user must free
 	struct node *head = NULL;
 	FILE *datafile;
@@ -51,8 +61,7 @@ int main(int argc, char **argv) {
                 printf("Unable to open file %s: %s\n", argv[1], strerror(errno));
                 exit(-1);
             }
-	    while(read = getline(&line,&numberBytes, datafile)!=-1) { ///loop to read file 
-		//need to add null character strcat(line,'\0');
+	    while(read = getline(&line,&numberBytes, datafile)!=-1) { ///loop to read file 	
 		stringLength = strlen(line);
 		buildLL(line, delim, &head, stringLength);
 	    }
@@ -71,7 +80,9 @@ int main(int argc, char **argv) {
      */
 
 
-
+    
+   //ret=getrusage(who,p);
+   // process(p,"\n\n------------------------after we run");
 
 
     fclose(datafile);

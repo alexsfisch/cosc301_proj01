@@ -29,14 +29,22 @@ void buildLL(char* line, char* delim, struct node **head, const int stringLength
 
 
 	while(token!=NULL) {
-		i = atoi(token);
-		if (i!=0) { //returns 0 if not digit
-			if (i&1==0){
-				list_insert(i,&new); //add integer token
-				list_sort(&new);
-			}
+		//if comment, break
+		if (strcmp(token,"#") ==0){
+			*head=new;
+			return;
 		}
-		token = strtok(NULL, delim);	//walk through tokens in current line
+		else {
+			i = atoi(token);
+			if (i!=0) { //returns 0 if not digit
+				//if no decimal
+				if(i%1 ==0) { //doens't work because i is truncated
+					list_insert(i,&new); //add integer token
+					list_sort(&new);
+				}
+			}
+			token = strtok(NULL, delim);	//walk through tokens in current line
+		}
 	}
 
 	*head=new;
