@@ -21,14 +21,9 @@ void usage(char *program) {
 
 int main(int argc, char **argv) {
 	//system and user time variables
-	/*int ret;
-	char *buffer;
-	int i = 0;
-	int who = RUSAGE_SELF;
-	struct rusage usage;
-	struct rusage *p=&usage;
-	ret = getrusage(who,p);
-	process(p,"---------before");*/
+        struct rusage usage2;
+	struct timeval end, end2;
+	getrusage(RUSAGE_SELF, &usage2);
 	//if use getline, user must free
 	struct node *head = NULL;
 	FILE *datafile;
@@ -36,7 +31,6 @@ int main(int argc, char **argv) {
 	char* line;
 	size_t numberBytes=NULL;
 	ssize_t read;
-	int counter= 0;
 	int stringLength = 0;
 	/* find out how we got invoked and deal with it */
 	switch (argc) {
@@ -47,10 +41,10 @@ int main(int argc, char **argv) {
 		//need to free malloc
 		while(read = getline(&line,&numberBytes, datafile)!=-1) { ///loop to read file 
 			buildLL(line, delim, &head, stringLength);
-			//read = getline(&line,&numberBytes, datafile);//need to free mallo
 		}
-		printf("%s\n","linked list: ");
+		printf("%s\n","*** List Contents Begin*** ");
 		printlist(&head);
+		printf("%s\n","*** List Contents End ***");
            	break;
 
         case 2:
@@ -65,8 +59,9 @@ int main(int argc, char **argv) {
 		stringLength = strlen(line);
 		buildLL(line, delim, &head, stringLength);
 	    }
-		printf("%s\n","linked list: ");
+		printf("%s\n","*** List Contents Begin*** ");
 		printlist(&head);
+		printf("%s\n","*** List Contents End ***");
             break;
 
         default:
@@ -78,12 +73,14 @@ int main(int argc, char **argv) {
      * you should be able to just read from datafile regardless 
      * whether it's stdin or a "real" file.
      */
-
-
-    
-   //ret=getrusage(who,p);
-   // process(p,"\n\n------------------------after we run");
-
+    //print out user and system times
+    getrusage(RUSAGE_SELF, &usage2);
+    end = usage2.ru_utime;
+    end2 = usage2.ru_stime;
+    printf("%s","User time:  ");
+    printf("%ld.%lds\n",end.tv_sec, end.tv_usec);
+    printf("%s","System time:  ");
+    printf("%ld.%lds\n",end2.tv_sec, end2.tv_usec);
 
     fclose(datafile);
     return 0;

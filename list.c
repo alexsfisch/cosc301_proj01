@@ -4,6 +4,8 @@
 #include <string.h>
 #include <strings.h>
 #include <ctype.h>
+#include <math.h>
+
 
 /* your list function definitions */
 
@@ -24,7 +26,7 @@ void buildLL(char* line, char* delim, struct node **head, const int stringLength
 	struct node *new = (struct node*)malloc(sizeof(struct node));
 	new = *head;
 	char* token;
-	int i;
+	double i;
 	token = strtok(line2, delim); //need to add other values
 
 
@@ -35,13 +37,14 @@ void buildLL(char* line, char* delim, struct node **head, const int stringLength
 			return;
 		}
 		else {
-			i = atoi(token);
+			i = atof(token);
 			if (i!=0) { //returns 0 if not digit
 				//if no decimal
-				if(i%1 ==0) { //doens't work because i is truncated
+				printf("%f\n",i);
+				//if(fmod(i,1.0)==0) { //doens't work because i is truncated
 					list_insert(i,&new); //add integer token
 					list_sort(&new);
-				}
+				//}
 			}
 			token = strtok(NULL, delim);	//walk through tokens in current line
 		}
