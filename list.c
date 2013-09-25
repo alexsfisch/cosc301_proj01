@@ -15,8 +15,6 @@ void list_insert(const int integer, struct node **head) {
      struct node *newnode = malloc(sizeof(struct node));
      int integer2 = (int*)malloc(sizeof(integer));
      integer2 = integer;
-	//printf("%s\n","Test");
-	//printf("%i\n",integer2);
      newnode->integer = integer2; //need to malloc this so that we can free new below
      newnode->next = *head;
      *head = newnode;
@@ -27,7 +25,7 @@ void buildLL(char* line, char* delim, struct node **head, const int stringLength
 	char line2[stringLength+1];
 	strcpy(line2,line);	//converting from char* to char[] for strtok
 	line2[stringLength+1]='\0';
-	struct node *new = (struct node*)malloc(sizeof(struct node));
+	struct node *new = NULL;
 	new = *head;
 	char* token;
 	double i;
@@ -40,7 +38,6 @@ void buildLL(char* line, char* delim, struct node **head, const int stringLength
 			return;
 		}
 		else {
-			printf("%s\n",token);
 			//if is 0
 			if (strcmp(token,"0")==0){
 				i = atof(token);
@@ -59,7 +56,6 @@ void buildLL(char* line, char* delim, struct node **head, const int stringLength
 		}
 	}
 	*head=new;
-	//free(new);
 }
 
 //used only for testing

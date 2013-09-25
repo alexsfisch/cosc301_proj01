@@ -41,10 +41,13 @@ int main(int argc, char **argv) {
 		//need to free malloc
 		while(read = getline(&line,&numberBytes, datafile)!=-1) { ///loop to read file 
 			buildLL(line, delim, &head, stringLength);
+			free(line);
+			line=NULL;
 		}
 		printf("%s\n","*** List Contents Begin*** ");
 		printlist(&head);
 		printf("%s\n","*** List Contents End ***");
+
            	break;
 
         case 2:
@@ -58,10 +61,13 @@ int main(int argc, char **argv) {
 	    while(read = getline(&line,&numberBytes, datafile)!=-1) { ///loop to read file 	
 		stringLength = strlen(line);
 		buildLL(line, delim, &head, stringLength);
+		free(line);
+		line=NULL;
 	    }
 		printf("%s\n","*** List Contents Begin*** ");
 		printlist(&head);
 		printf("%s\n","*** List Contents End ***");
+		
             break;
 
         default:
