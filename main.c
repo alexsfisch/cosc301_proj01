@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
 	//if use getline, user must free
 	struct node *head = NULL;
 	FILE *datafile;
-	char* delim = " ";
+	char* delim = " , \n,\t";
 	char* line;
 	size_t numberBytes=NULL;
 	ssize_t read;
