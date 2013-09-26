@@ -20,7 +20,6 @@ void list_insert(const int integer, struct node **head) {
      *head = newnode;
 }
 
-
 void buildLL(char* line, char* delim, struct node **head, const int stringLength){
 	char line2[stringLength+1];
 	strcpy(line2,line);	//converting from char* to char[] for strtok

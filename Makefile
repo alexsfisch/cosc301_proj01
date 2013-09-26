@@ -1,5 +1,4 @@
 # Makefile template for project 1
-
 CC = gcc
 CFLAGS = -g -Wall
 # main executable file first

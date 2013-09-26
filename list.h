@@ -1,8 +1,7 @@
 #ifndef __LIST_H__
 #define __LIST_H__
-
 /* your list data structure declarations */
-
+//Change 
 struct node {
     int integer;
     struct node *next; 

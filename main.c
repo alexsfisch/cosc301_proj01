@@ -12,7 +12,6 @@
 #include "list.h"
 #include <sys/resource.h>
 
-
 void usage(char *program) {
     fprintf(stderr, "usage: %s [<datafile>]\n", program);
     exit(1);
