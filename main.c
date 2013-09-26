@@ -1,7 +1,7 @@
 /*
- *
- * author name, date, and other info here
- *
+ *Alex Fisch
+ *Ross Nicholson
+ *September 25
  */
 
 #include <stdio.h>
