@@ -1,0 +1,23 @@
+
+# this file is a sample input file for project 1
+# lines beginning with a '#' symbol are comments and should be ignored
+# also, any part of a line *after* the '#' symbol should be ignored
+# blank lines should also be ignored
+# non-valid inputs include any non-integers or strings
+# 
+34                              # valid input '34'
+-65                             # valid input '-65'
+5.43                            # this should be ignored
+abcd                            # this should be ignored
+5.43 6.42                       # these should both be ignored
+9.13 12                         # '9.13' should be ignored, but '12' should be processed
+# this is a comment             # lines beginning with a '#' should be ignored
+23                              # valid input '23'
+10923                           # valid input '10923'
+33                              # valid input '33'
+34 25 68                        # this should read 3 different integers
+100                             # valid input '100'
+      	                        # blank lines should also be ignored
+99                              # valid input '99'
+
+
